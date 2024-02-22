@@ -19,8 +19,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resource('movies', MovieController::class)->except('show')->middleware('auth');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/movielist', function(){
+    return view('temp.movielist');
+});
+Route::get('/movieform', function(){
+    return view('temp.movieform');
+});
+Route::get('/homepage', function(){
+    return view('temp.movielist');
+});

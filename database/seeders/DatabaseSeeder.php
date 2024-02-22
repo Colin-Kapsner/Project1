@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Movie;
+use illuminate\Support\Facades\Hash;
+use illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory(30)
+            ->has(Movie::factory()->count(10))
+            ->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        User::factory()
+            ->has(Movie::factory()->count(10))
+            ->create([
+                'first_name' => 'Colin',
+                'last_name' => 'Kapsner',
+                'email' => 'colinkapsner@yahoo.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'),
+                'remember_token' => Str::random(10),
+            ]);
     }
 }
