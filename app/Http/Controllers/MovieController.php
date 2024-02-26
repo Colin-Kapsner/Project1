@@ -15,7 +15,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movies::where('user_id', Auth::id())->orderBy('rating', 'desc')->get();
+        $movies = Movie::where('user_id', Auth::id())->orderBy('rating', 'desc')->get();
         return view('movie.index', ['movies' => $movies]);
     }
 
