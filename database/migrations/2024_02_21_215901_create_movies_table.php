@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->float('rating', 10, 1);
-            $table->enum('genre', ['action', 'horror', 'drama', 'sci-fi', 'comedy', 'romance', 'fantasy', 'other']);
+            $table->enum('genre', ['Action', 'Horror', 'Drama', 'Sci-Fi', 'Comedy', 'Romance', 'Fantasy', 'Other']);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

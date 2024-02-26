@@ -4,7 +4,7 @@
     
     <div class="row">
         <div class="col-12">
-            <h2>My Ratings <a href="{{ route('movies.create' }}" class="btn btn-primary float-end"> Add a Movie</a></h2>
+            <h2>My Ratings <a href="{{ route('movies.create') }}" class="btn btn-primary float-end"> Add a Movie</a></h2>
         </div>
     </div>
 
@@ -14,9 +14,9 @@
                 <thead class="table-light">
                     
                     <tr>
-                        <th>title</th>
-                        <th>rating</th>
-                        <th>genre</th>
+                        <th>Title</th>
+                        <th>Rating</th>
+                        <th>Genre</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -24,16 +24,12 @@
                 <tbody id="data">
                 @foreach($movies as $movie)
                 <tr>
-                    <td>{{ $movies->title }}</td>
-                    <td>{{ $movies->rating }}</td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success">"</i>{{ $movies->genre }}
-                        </span>
-                    </td>
+                    <td>{{ $movie->title }}</td>
+                    <td>{{ $movie->rating }}</td>
+                    <td>{{ $movie->genre }}</td>
                     <td class="text-end">
                         <a href="#" class="btn btn-sm btn-neutral">View</a>
-                        <a href="{{ route('movies.edit', ['movie' => $movie->id] }}" class="btn btn-sm btn-square btn-neutral">
+                        <a href="{{ route('movies.edit', ['movie' => $movie->id]) }}" class="btn btn-sm btn-square btn-neutral">
                             <i class="bi bi-pencil"></i>
 </a>
                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">

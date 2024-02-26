@@ -55,7 +55,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('movies.index ') }}">
+                                    <a class="dropdown-item" href="{{ route('movies.index') }}">
                                         My Ratings
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
