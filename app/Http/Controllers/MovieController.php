@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Movie::class, 'trip');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -30,8 +34,13 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreMovieRequest $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'rating' => 'required|numeric|gt:0|lt:10.1',
+            'genre' => 'required|in:action,horror,drama,sci-fi,comedy,romance,fantasy,other',
+        ]);
         $movie = new Movie($request->all());
         $movie->user_id = Auth::id();
         $movie->save();
