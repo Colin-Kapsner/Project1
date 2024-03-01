@@ -13,7 +13,7 @@ class MoviePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class MoviePolicy
      */
     public function view(User $user, Movie $movie): bool
     {
-        //
+        return $user->id == $movie->user_id;
     }
 
     /**
@@ -29,7 +29,7 @@ class MoviePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class MoviePolicy
      */
     public function update(User $user, Movie $movie): bool
     {
-        //
+        return $user->id == $movie->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class MoviePolicy
      */
     public function delete(User $user, Movie $movie): bool
     {
-        //
+        return $user->id == $movie->user_id;
     }
 
     /**
@@ -53,7 +53,7 @@ class MoviePolicy
      */
     public function restore(User $user, Movie $movie): bool
     {
-        //
+        return $user->id == $movie->user_id;
     }
 
     /**
@@ -61,6 +61,6 @@ class MoviePolicy
      */
     public function forceDelete(User $user, Movie $movie): bool
     {
-        //
+        return $user->id == $movie->user_id;
     }
 }

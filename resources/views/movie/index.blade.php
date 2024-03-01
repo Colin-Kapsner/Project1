@@ -23,27 +23,91 @@
 
                 <tbody id="data">
                 @foreach($movies as $movie)
-                <tr>
+                <tr id="{{ $movie->id }}">
                     <td>{{ $movie->title }}</td>
                     <td>{{ $movie->rating }}</td>
                     <td>{{ $movie->genre }}</td>
                     <td class="text-end">
                         <a href="#" class="btn btn-sm btn-neutral">Edit</a>
                         <a href="{{ route('movies.edit', ['movie' => $movie->id]) }}" class="btn btn-sm btn-square btn-neutral">
-                            <i class="bi bi-pencil"></i>
-</a>
+                            <i class="bi bi-pencil">Edit</i>
+                        </a>
                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
+                            <i class="bi bi-trash">Delete</i>
                         </button>
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
-
             </table>
         </div>
     </div>
 
 
 
+<!--Read Data Modal-->
+<div class="modal fade" id="readData">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Profile</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <form action="#" id="myForm">
+
+                    <div class="card imgholder">
+                        <img src="./image/Profile Icon.webp" alt="" width="200" height="200" class="showImg">
+                    </div>
+
+                    <div class="inputField">
+                        <div>
+                            <label for="title">title:</label>
+                            <input type="text" name="" id="title" required>
+                        </div>
+                        <div>
+                            <label for="rating">rating:</label>
+                            <input type="number" name="" id="rating" required>
+                        </div>
+                        <div>
+                            <label for="genre">genre:</label>
+                            <input type="text" name="" id="genre" required>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
+
+
+@push('scripts')
+<script type="module">
+    $(document).ready(function(){
+        $('.delete-btn').on('click', function(e){
+            let row = $(this).closest('tr');
+            let id = row.attr('id');
+            if(confirm("You sure?")){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: '/movies/' + id,
+                    type: 'DELETE',
+                    success: function(result){
+                        $(row).remove();
+                    }
+                });
+            }
+        });
+    });
+</script>
+@endpush
