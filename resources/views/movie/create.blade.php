@@ -6,7 +6,6 @@
 
         <div class="modal-header">
             <h4 class="modal-title">Rate A New Movie</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
@@ -36,14 +35,11 @@
                             <option value="Other">Other</option>
                     </div>
                 </div>
-
+                    <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
             </form>
         </div>
 
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
-        </div>
+        
     </div>
 </div>
 @endsection
