@@ -39,10 +39,7 @@
                             <option value="Other" @selected(old('modality'), $movie == 'Other')>Other</option>
                     </div>
                 </div>
-                <div>
-                    <button type="button" class="btn btn-secondary" >Close</button>
                     <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
-                </div>
             </form>
         </div>
 

@@ -34,8 +34,8 @@
                             <option value="Fantasy">Fantasy</option>
                             <option value="Other">Other</option>
                     </div>
-                </div>
                     <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
+                </div>
             </form>
         </div>
 
