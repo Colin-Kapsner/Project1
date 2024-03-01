@@ -11,7 +11,7 @@
 
         <div class="modal-body">
 
-            <form action="{{ route('movies.store') }}" method="POST">
+            <form action="{{ route('movies.store') }}" id="create" method="POST">
                 @csrf
 
                 <div class="inputField">
@@ -20,11 +20,11 @@
                         <input type="text" name="title" id="title" >
                     </div>
                     <div>
-                        <label for="rating">Rating:</label>
-                        <input type="number" name="rating" id="rating" >
+                        <label for="rating">Rating 1-10:</label>
+                        <input type="number" min="1" max="10" name="rating" id="rating" >
                     </div>
                     <div>
-                        <label for="genre">genre:</label>
+                        <label for="genre">Genre:</label>
                         <select class="form-select" id="genre" name="genre">
                             <option value="Action">Action</option>
                             <option value="Horror">Horror</option>
@@ -37,13 +37,11 @@
                     </div>
                 </div>
 
+                <button type="submit" form="create" class="btn btn-primary submit">Create</button>
+
             </form>
         </div>
 
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
-        </div>
     </div>
 </div>
 @endsection
