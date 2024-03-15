@@ -26,6 +26,3 @@ Route::resource('movies', MovieController::class)->except('show')->middleware('a
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/movieform', function(){
-    return view('temp.movieform');
-});

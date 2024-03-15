@@ -12,7 +12,7 @@ class MovieController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Movie::class, 'trip');
+        $this->authorizeResource(Movie::class, 'movie');
     }
     /**
      * Display a listing of the resource.
@@ -45,7 +45,7 @@ class MovieController extends Controller
         $movie->user_id = Auth::id();
         $movie->save();
         
-        return redirect(route('movies.index'));
+        return redirect(route('movies.index'))->with('status', 'Movie Updated!');
     }
 
     /**
@@ -70,7 +70,7 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
         $movie->update($request->all());
-        return redirect(route('trips.index'));
+        return redirect(route('movies.index'));
     }
 
     /**
