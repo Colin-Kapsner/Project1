@@ -30,13 +30,13 @@
                         <label for="genre">genre:</label>
                         <select class="form-select" id="genre" name="genre">
                             <option value="Action" @selected(old('modality', $movie) == 'action')>Action</option>
-                            <option value="Horror" @selected(old('modality'), $movie == 'Horror')>Horror</option>
-                            <option value="Drama" @selected(old('modality'), $movie == 'Drama')>Drama</option>
-                            <option value="Sci-Fi" @selected(old('modality'), $movie == 'Sci-Fi')>Sci-Fi</option>
-                            <option value="Comedy" @selected(old('modality'), $movie == 'Comedy')>Comedy</option>
-                            <option value="Romance" @selected(old('modality'), $movie == 'Romance')>Romance</option>
-                            <option value="Fantasy" @selected(old('modality'), $movie == 'Fantasy')>Fantasy</option>
-                            <option value="Other" @selected(old('modality'), $movie == 'Other')>Other</option>
+                            <option value="Horror" @selected(old('modality'), $movie == horror')>Horror</option>
+                            <option value="Drama" @selected(old('modality'), $movie == 'drama')>Drama</option>
+                            <option value="Sci-Fi" @selected(old('modality'), $movie == 'sci-Fi')>Sci-Fi</option>
+                            <option value="Comedy" @selected(old('modality'), $movie == 'comedy')>Comedy</option>
+                            <option value="Romance" @selected(old('modality'), $movie == 'romance')>Romance</option>
+                            <option value="Fantasy" @selected(old('modality'), $movie == 'fantasy')>Fantasy</option>
+                            <option value="Other" @selected(old('modality'), $movie == 'other')>Other</option>
                     </div>
                 </div>
                     <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
