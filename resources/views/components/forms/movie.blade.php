@@ -4,7 +4,7 @@
     <div class="modal-content">
         <h2 class="modal-title">Rate/Edit a Movie</h2>
         <div class="modal-body">
-            <form action="{{ $action }}" method="POST">
+            <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method($method)
                 <div class="inputField">
@@ -38,8 +38,16 @@
                             <option value="Fantasy" @selected(old('modality'), $movie == 'fantasy')>Fantasy</option>
                             <option value="Other" @selected(old('modality'), $movie == 'other')>Other</option>
                     </div>
+                    <div class="row mb-3">
+                        <label for="movie-images" class="col-md-4 col-form-label text-md-end">{{ __('Movie Image')}}</label>
+
+                        <div class="col-md-6">
+                            <input id="movie-image" type="file" class="form-control" name="profile_image">
+                        </div>
+                    </div>
+
                 </div>
-                <button type="submit" class="btn btn-primary submit mt-3">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
 
