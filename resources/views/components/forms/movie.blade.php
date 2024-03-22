@@ -26,28 +26,32 @@
                         </div>
                         @enderror
                     </div>
-                    <div>
+                    <div class="mb-3">
                         <label for="genre">Genre:</label>
                         <select class="form-select" id="genre" name="genre">
-                            <option value="Action" @selected(old('modality', $movie) == 'action')>Action</option>
-                            <option value="Horror" @selected(old('modality'), $movie == horror')>Horror</option>
-                            <option value="Drama" @selected(old('modality'), $movie == 'drama')>Drama</option>
-                            <option value="Sci-Fi" @selected(old('modality'), $movie == 'sci-Fi')>Sci-Fi</option>
-                            <option value="Comedy" @selected(old('modality'), $movie == 'comedy')>Comedy</option>
-                            <option value="Romance" @selected(old('modality'), $movie == 'romance')>Romance</option>
-                            <option value="Fantasy" @selected(old('modality'), $movie == 'fantasy')>Fantasy</option>
-                            <option value="Other" @selected(old('modality'), $movie == 'other')>Other</option>
+                            <option value="Action" @selected(old('modality', $movie)=='action' )>Action</option>
+                            <option value="Horror" @selected(old('modality'), $movie==horror')>Horror</option>
+                            <option value="Drama" @selected(old('modality'), $movie=='drama' )>Drama</option>
+                            <option value="Sci-Fi" @selected(old('modality'), $movie=='sci-Fi' )>Sci-Fi</option>
+                            <option value="Comedy" @selected(old('modality'), $movie=='comedy' )>Comedy</option>
+                            <option value="Romance" @selected(old('modality'), $movie=='romance' )>Romance</option>
+                            <option value="Fantasy" @selected(old('modality'), $movie=='fantasy' )>Fantasy</option>
+                            <option value="Other" @selected(old('modality'), $movie=='other' )>Other</option>
+                        </select>   
                     </div>
-                    <div class="row mb-3">
-                        <label for="movie-images" class="col-md-4 col-form-label text-md-end">{{ __('Movie Image')}}</label>
-
+                    <div>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('Add An Image') }}</label>
                         <div class="col-md-6">
                             <input id="movie-image" type="file" class="form-control" name="profile_image">
                         </div>
+                        
+
+
                     </div>
 
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                </div class="mt-3">
+
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </form>
         </div>
 
