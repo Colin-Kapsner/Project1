@@ -70,6 +70,10 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
         $movie->update($request->all());
+        if ($request->hasFile('movie_image')){
+            $path = $request->file('movie_image')->store('public/images');
+            $images->img = $path;
+        }
         return redirect(route('trips.index'));
     }
 
