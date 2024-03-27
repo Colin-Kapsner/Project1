@@ -19,7 +19,6 @@ class MovieFactory extends Factory
         return [
             'title' => fake()->name(),
             'rating' => fake()->randomFloat(1, .1, 10.0),
-            'genre' => fake()->randomElement(['action', 'horror', 'drama', 'sci-fi', 'comedy', 'romance', 'fantasy', 'other']),
         ];
     }
 }

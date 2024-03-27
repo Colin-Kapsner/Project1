@@ -1,4 +1,4 @@
-@props(['title', 'action', 'method', 'movie' => null])
+@props(['title', 'action', 'method', 'movie' => null, 'genres' => null])
 
 <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -27,24 +27,21 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="genre">Genre:</label>
-                        <select class="form-select" id="genre" name="genre">
-                            <option value="Action" @selected(old('modality', $movie)=='action' )>Action</option>
-                            <option value="Horror" @selected(old('modality'), $movie==horror')>Horror</option>
-                            <option value="Drama" @selected(old('modality'), $movie=='drama' )>Drama</option>
-                            <option value="Sci-Fi" @selected(old('modality'), $movie=='sci-Fi' )>Sci-Fi</option>
-                            <option value="Comedy" @selected(old('modality'), $movie=='comedy' )>Comedy</option>
-                            <option value="Romance" @selected(old('modality'), $movie=='romance' )>Romance</option>
-                            <option value="Fantasy" @selected(old('modality'), $movie=='fantasy' )>Fantasy</option>
-                            <option value="Other" @selected(old('modality'), $movie=='other' )>Other</option>
-                        </select>   
+                        <label class="mt-3" for="genre">Genre:</label>
+                        <!-- A Checkbox For Each Genre --> 
+                        @foreach ($genres as $genre) 
+                        <br>
+                        <input type="checkbox" name="genre[]" value="{{ $genre->genre }}" @checked(old($movie->genre == $genre->genre )) />
+                        <label for="{{ $genre->genre }}" class="col-md-4 col-form-label text-md-end">{{ $genre->genre }}</label>
+                        @endforeach
+                        
                     </div>
                     <div>
-                        <label class="col-md-4 col-form-label text-md-end">{{ __('Add An Image') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end mt-4">{{ __('Add An Image') }}</label>
                         <div class="col-md-6">
                             <input id="movie-image" type="file" class="form-control" name="profile_image">
                         </div>
-                        
+
 
 
                     </div>

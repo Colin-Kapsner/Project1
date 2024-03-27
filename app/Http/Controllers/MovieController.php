@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Genre;
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('movie.create');
+        $genres = Genre::all();
+        return view('movie.create', ['genres' => $genres]);
     }
 
     /**
@@ -61,7 +63,8 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        return view('movie.edit', ['movie' => $movie]);
+        $genres = Genre::all();
+        return view('movie.edit', ['movie' => $movie, 'genres' => $genres]);
     }
 
     /**
