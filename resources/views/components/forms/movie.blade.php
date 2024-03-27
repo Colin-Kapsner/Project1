@@ -39,7 +39,7 @@
                     <div>
                         <label class="col-md-4 col-form-label text-md-end mt-4">{{ __('Add An Image') }}</label>
                         <div class="col-md-6">
-                            <input id="movie-image" type="file" class="form-control" name="profile_image">
+                            <input id="movie_image" type="file" class="form-control" name="movie_image">
                         </div>
 
 
