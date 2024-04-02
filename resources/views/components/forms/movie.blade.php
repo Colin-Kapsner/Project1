@@ -32,26 +32,34 @@
                         @foreach ($genres as $genre) 
                         <br>
                         <label for="{{ $genre->genre }}" class="col-md-2 col-form-label">{{ $genre->genre }}</label>
-                        <input type="checkbox" name="genre[]" value="{{ $genre->genre }}" @checked(old($movie->genre == $genre->genre )) />
+                        <input type="checkbox" name="genres[]" value="{{ $genre->id }}" @checked($movie ? $movie->genres->contains($genre->id) : false) />
                         @endforeach
-                        
                     </div>
+
                     <div>
-                        <label class="col-md-4 col-form-label text-md-end mt-4">{{ __('Add An Image') }}</label>
-                        <div class="col-md-6">
-                            <input id="movie_image" type="file" class="form-control" name="movie_image">
+                        <button type="button" id="add-img" class="btn btn-primary mt-3">{{ __('Add An Image') }}</button>
+                        <div class="col-md-6" id="image_inputs">
+                            <input id="movie_image" type="file" class="form-control mt-2" name="movie_image[]">
                         </div>
-
-
-
                     </div>
-
                 </div class="mt-3">
 
-                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
             </form>
         </div>
 
 
     </div>
 </div>
+
+
+@push('scripts')
+<script type="module">
+    $(document).ready(function(){
+        $('#add-img').on('click', function(e){
+            let new_input = $('<input id="movie_image" type="file" class="form-control mt-2" name="movie_image[]">');
+            $('#image_inputs').append(new_input);
+        });
+    });
+</script>
+@endpush

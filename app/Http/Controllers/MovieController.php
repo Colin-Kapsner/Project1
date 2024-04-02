@@ -70,14 +70,20 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMovieRequest $request, Movie $movie)
+    public function update(Request $request, Movie $movie)
     {
-        $movie->update($request->all());
-        if ($request->hasFile('movie_image')){
-            $path = $request->file('movie_image')->store('public/images');
-            $images->img = $path;
+        $movie->update($request->only(['title', 'rating']));
+        $movie->genres()->detach();
+        foreach($request->genres as $genre){
+            $movie->genres()->attach($genre);
         }
-        return redirect(route('trips.index'));
+
+        if($request->hasFile('movie_image')){
+            $path = $request->file('movie_image')->store('public/images');
+            $movie->profile_image = $path;
+        }
+
+        return redirect(route('movies.index'));
     }
 
     /**
