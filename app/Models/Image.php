@@ -10,6 +10,11 @@ class Image extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+        'path',
+    ];
+
     public function movies(): BelongsToMany
     {
         return $this->belongsToMany(Movie::class);

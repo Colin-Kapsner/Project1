@@ -39,12 +39,12 @@
                     <div>
                         <button type="button" id="add-img" class="btn btn-primary mt-3">{{ __('Add An Image') }}</button>
                         <div class="col-md-6" id="image_inputs">
-                            <input id="movie_image" type="file" class="form-control mt-2" name="movie_image[]">
+                            <input id="movie_image" type="file" class="form-control mt-2" name="movie_images[]">
                         </div>
                     </div>
                 </div class="mt-3">
 
-                <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
+                <button type="submit" class="btn btn-success mt-3 mb-5">Submit</button>
             </form>
         </div>
 
@@ -57,7 +57,7 @@
 <script type="module">
     $(document).ready(function(){
         $('#add-img').on('click', function(e){
-            let new_input = $('<input id="movie_image" type="file" class="form-control mt-2" name="movie_image[]">');
+            let new_input = $('<input id="movie_image" type="file" class="form-control mt-2" name="movie_images[]">');
             $('#image_inputs').append(new_input);
         });
     });

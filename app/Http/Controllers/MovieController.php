@@ -46,6 +46,11 @@ class MovieController extends Controller
         $movie = new Movie($request->all());
         $movie->user_id = Auth::id();
         $movie->save();
+
+        if($request->hasFile('movie_image')){
+            $path = $request->file('movie_image')->store('public/images');
+            $movie->images()->create(['path' => $path]);
+        }
         
         return redirect(route('movies.index'));
     }
@@ -78,10 +83,11 @@ class MovieController extends Controller
             $movie->genres()->attach($genre);
         }
 
-        if($request->hasFile('movie_image')){
-            $path = $request->file('movie_image')->store('public/images');
-            $movie->profile_image = $path;
+        foreach($request->file('movie_images') as $image){
+            $path = $image->store('public/images');
+            $movie->images()->create(['path' => $path]);
         }
+            
 
         return redirect(route('movies.index'));
     }
