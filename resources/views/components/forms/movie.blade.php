@@ -31,8 +31,8 @@
                         <!-- A Checkbox For Each Genre --> 
                         @foreach ($genres as $genre) 
                         <br>
+                        <label for="{{ $genre->genre }}" class="col-md-2 col-form-label">{{ $genre->genre }}</label>
                         <input type="checkbox" name="genre[]" value="{{ $genre->genre }}" @checked(old($movie->genre == $genre->genre )) />
-                        <label for="{{ $genre->genre }}" class="col-md-4 col-form-label text-md-end">{{ $genre->genre }}</label>
                         @endforeach
                         
                     </div>

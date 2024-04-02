@@ -53,5 +53,15 @@ class DatabaseSeeder extends Seeder
                     $genres->random(rand(1, 3))->pluck('id')->toArray()
                 );
         });
+
+
+        $movies = Movie::all();
+    
+        foreach ($movies as $movie){
+            DB::table('images')->insert([
+                'movie_id' => $movie->id,
+                'img' => 'https://picsum.photos/200',
+            ]);
+        }
     }
 }
