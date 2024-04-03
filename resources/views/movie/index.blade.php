@@ -29,7 +29,7 @@
                 <tbody id="data">
                 @foreach($movies as $movie)
                 <tr id="{{ $movie->id }}">
-                    <td>{{ $movie->title }}</td>
+                    <td><a href="{{ route('movies.show', ['movie' => $movie->id]) }}">{{ $movie->title }}</a></td>
                     <td>{{ $movie->rating }}</td>
                     <td>{{ $movie->genre }}</td>
                     <td class="text-end">

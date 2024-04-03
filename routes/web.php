@@ -25,3 +25,6 @@ Auth::routes();
 Route::resource('movies', MovieController::class)->except('show')->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/movies/{movie}', [MovieController::class, 'show'])->name('movies.show');

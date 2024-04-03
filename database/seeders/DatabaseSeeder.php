@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
         foreach ($movies as $movie){
             DB::table('images')->insert([
                 'movie_id' => $movie->id,
-                'img' => 'https://picsum.photos/200',
+                'path' => 'https://picsum.photos/200',
             ]);
         }
     }

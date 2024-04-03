@@ -60,7 +60,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        return view('movie.detail', ['movie' => $movie]);
     }
 
     /**
@@ -83,9 +83,11 @@ class MovieController extends Controller
             $movie->genres()->attach($genre);
         }
 
-        foreach($request->file('movie_images') as $image){
-            $path = $image->store('public/images');
-            $movie->images()->create(['path' => $path]);
+        if($request->hasFile('movie_image')){
+            foreach($request->file('movie_images') as $image){
+                $path = $image->store('public/images');
+                $movie->images()->create(['path' => $path]);
+            }
         }
             
 
