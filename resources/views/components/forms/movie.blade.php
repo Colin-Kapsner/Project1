@@ -2,7 +2,7 @@
 
 <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-        <h2 class="modal-title">Rate/Edit a Movie</h2>
+        <h2 class="modal-title">{{ $title }}</h2>
         <div class="modal-body">
             <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -27,7 +27,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="mt-3" for="genre">Genre:</label>
+                        <label class="mt-3" for="genre">Genres:</label>
                         <!-- A Checkbox For Each Genre --> 
                         @foreach ($genres as $genre) 
                         <br>
@@ -44,7 +44,7 @@
                     </div>
                 </div class="mt-3">
 
-                <button type="submit" class="btn btn-success mt-3 mb-5">Submit</button>
+                <button type="submit" class="btn btn-success mt-3">Submit</button>
             </form>
         </div>
 

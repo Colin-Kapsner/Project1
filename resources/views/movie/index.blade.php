@@ -21,7 +21,7 @@
                     <tr>
                         <th>Title</th>
                         <th>Rating</th>
-                        <th>Genre</th>
+                        <th>Genres</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -31,7 +31,15 @@
                 <tr id="{{ $movie->id }}">
                     <td><a href="{{ route('movies.show', ['movie' => $movie->id]) }}">{{ $movie->title }}</a></td>
                     <td>{{ $movie->rating }}</td>
-                    <td>{{ $movie->genre }}</td>
+                    <td>
+                    <ul>
+                        @foreach($movie->genres as $genre)
+                            <li>
+                                {{ $genre->genre }}
+                            </li>
+                        @endforeach
+                    </ul>
+                    </td>
                     <td class="text-end">
                         <a href="{{ route('movies.edit', ['movie' => $movie->id]) }}" class="btn btn-sm btn-square btn-neutral">
                             <i class="bi bi-pencil">Edit</i>

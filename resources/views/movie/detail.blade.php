@@ -5,6 +5,7 @@
     <div class="modal-content">
         <h2 class="modal-title">Detail View</h2>
         <div class="modal-body">
+        <button type="button" href="{{ route('movies.edit', ['movie' => $movie->id]) }}" class="btn btn-success mt-3 mb-5">Edit</button>
             <div>
                 <label for="title">Title:</label>
                 <p>{{ $movie->title }}</p>

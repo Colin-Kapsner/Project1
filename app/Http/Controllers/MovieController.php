@@ -36,20 +36,25 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMovieRequest $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required|string',
             'rating' => 'required|numeric|gt:0|lt:10.1',
-            'genre' => 'required|in:action,horror,drama,sci-fi,comedy,romance,fantasy,other',
         ]);
         $movie = new Movie($request->all());
         $movie->user_id = Auth::id();
         $movie->save();
 
-        if($request->hasFile('movie_image')){
-            $path = $request->file('movie_image')->store('public/images');
-            $movie->images()->create(['path' => $path]);
+        foreach($request->genres as $genre){
+            $movie->genres()->attach($genre);
+        }
+
+        if($request->hasFile('movie_images')){
+            foreach($request->file('movie_images') as $image){
+                $path = str_replace('public', '/storage', $image->store('public/images'));
+                $movie->images()->create(['path' => $path]);
+            }
         }
         
         return redirect(route('movies.index'));
@@ -77,15 +82,21 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
+
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'rating' => 'required|numeric|gt:0|lt:10.1',
+        ]);
+
         $movie->update($request->only(['title', 'rating']));
         $movie->genres()->detach();
         foreach($request->genres as $genre){
             $movie->genres()->attach($genre);
         }
 
-        if($request->hasFile('movie_image')){
+        if($request->hasFile('movie_images')){
             foreach($request->file('movie_images') as $image){
-                $path = $image->store('public/images');
+                $path = str_replace('public', '/storage', $image->store('public/images'));
                 $movie->images()->create(['path' => $path]);
             }
         }
